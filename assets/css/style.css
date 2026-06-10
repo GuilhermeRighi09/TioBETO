@@ -1,0 +1,512 @@
+:root {
+    --space-blue: #070B19;      /* Azul profundo do céu de La La Land */
+    --gold-champagne: #dfba6b;  /* Ouro envelhecido sofisticado */
+    --gold-light: #f4ebd0;      /* Creme/Champagne suave */
+    --pure-white: #ffffff;
+    --text-muted: #a4adbe;      /* Azul acinzentado para textos secundários */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--space-blue);
+    color: var(--pure-white);
+    overflow-x: hidden;
+    line-height: 1.8;
+}
+
+/* Efeito de Fundo Animado (Estrelas Premium Fixas) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+        radial-gradient(var(--gold-champagne), rgba(223,186,107,.1) 1px, transparent 30px);
+    background-size: 550px 550px, 350px 350px;
+    background-position: 0 0, 40px 60px;
+    opacity: 0.25;
+    z-index: -1;
+    animation: smoothGlow 10s infinite alternate ease-in-out;
+}
+
+@keyframes smoothGlow {
+    0% { opacity: 0.2; transform: scale(1); }
+    100% { opacity: 0.35; transform: scale(1.03); }
+}
+
+/* PLAYER DE MÚSICA CINEMATOGRÁFICO */
+.music-player-container {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(7, 11, 25, 0.9);
+    padding: 10px 20px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(223, 186, 107, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+.player-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gold-champagne);
+    color: var(--space-blue);
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.player-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(223, 186, 107, 0.6);
+}
+
+.player-btn.playing {
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(223, 186, 107, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(223, 186, 107, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(223, 186, 107, 0); }
+}
+
+.player-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gold-champagne);
+    letter-spacing: 1px;
+}
+
+.track-status {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+/* HERO / INTRODUÇÃO */
+.cinema-hero {
+    position: relative;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    background: linear-gradient(to bottom, rgba(7, 11, 25, 0.2), var(--space-blue));
+}
+
+.hero-inner {
+    max-width: 800px;
+    z-index: 2;
+}
+
+.hero-date {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold-champagne);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.cinema-hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 400;
+    color: var(--pure-white);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.hero-lead {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* SEÇÃO DE NARRATIVA ADICIONAL */
+.narrative-section {
+    padding: 80px 20px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.02), transparent);
+}
+
+.narrative-container {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold-champagne);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.narrative-container h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--pure-white);
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.narrative-container p {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    font-weight: 300;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* SEÇÃO DA GALERIA DE FOTOS */
+.gallery-section {
+    max-width: 900px; /* Estreitou um pouco para valorizar a verticalidade */
+    margin: 40px auto 100px auto;
+    padding: 0 20px;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.gallery-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    color: var(--gold-champagne);
+    margin-bottom: 8px;
+}
+
+.gallery-header p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ALTURA AMPLIADA DO CARROSSEL (85vh - TELA DE CINEMA) */
+.gallery-slider {
+    width: 100%;
+    height: 85vh; /* Aumentado de 70vh para 85vh */
+    max-height: 780px; /* Aumentado de 600px para 780px */
+    border-radius: 12px;
+    border: 1px solid rgba(223, 186, 107, 0.25);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+}
+
+.swiper-slide {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #040710;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Legenda Estilo Subtítulo de Filme */
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(7, 11, 25, 0.95) 0%, rgba(7, 11, 25, 0.4) 70%, transparent 100%);
+    padding: 60px 30px 35px 30px;
+    text-align: center;
+    z-index: 5;
+}
+
+.slide-caption span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+    color: var(--gold-light);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(223, 186, 107, 0.2);
+    padding-bottom: 5px;
+}
+
+/* Customização dos Controles do Swiper */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--gold-champagne) !important;
+    transform: scale(0.75);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    color: var(--pure-white) !important;
+}
+
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--gold-champagne) !important;
+}
+
+/* SEÇÃO MENSAGEM FINAL */
+.closing-note {
+    max-width: 700px;
+    margin: 0 auto 120px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.note-card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 50px 40px;
+    border-radius: 8px;
+    border-top: 2px solid var(--gold-champagne);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.closing-note p {
+    font-family: 'Cinzel', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 25px;
+}
+
+.cinema-hero {
+    position: relative;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-inner { max-width: 800px; z-index: 2; }
+.hero-date { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; color: var(--gold-champagne); font-weight: 500; display: block; margin-bottom: 15px; }
+.cinema-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 400; color: var(--pure-white); margin-bottom: 25px; letter-spacing: 2px; }
+.hero-lead { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-muted); font-weight: 300; max-width: 650px; margin: 0 auto; }
+
+/* SEÇÃO DE NARRATIVA */
+.narrative-section { padding: 60px 20px; }
+.narrative-container { max-width: 750px; margin: 0 auto; text-align: center; }
+.section-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gold-champagne); font-weight: 600; display: block; margin-bottom: 15px; }
+.narrative-container h2 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: var(--pure-white); margin-bottom: 30px; font-weight: 400; }
+.narrative-container p { font-size: clamp(0.95rem, 1.8vw, 1.1rem); color: var(--text-muted); margin-bottom: 25px; font-weight: 300; text-align: justify; }
+
+/* SEÇÃO DA GALERIA */
+.gallery-section { max-width: 900px; margin: 20px auto 60px auto; padding: 0 20px; }
+.gallery-header { text-align: center; margin-bottom: 40px; }
+.gallery-header h2 { font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--gold-champagne); margin-bottom: 8px; }
+.gallery-header p { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
+
+.gallery-slider {
+    width: 100%;
+    height: 85vh;
+    max-height: 780px;
+    border-radius: 12px;
+    border: 1px solid rgba(223, 186, 107, 0.25);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+}
+
+.swiper-slide { position: relative; display: flex; justify-content: center; align-items: center; background: #040710; overflow: hidden; }
+.swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+.slide-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(7, 11, 25, 0.95) 0%, rgba(7, 11, 25, 0.4) 70%, transparent 100%); padding: 60px 30px 35px 30px; text-align: center; z-index: 5; }
+.slide-caption span { font-family: 'Montserrat', sans-serif; font-size: clamp(0.9rem, 1.8vw, 1.05rem); color: var(--gold-light); font-weight: 400; letter-spacing: 0.5px; border-bottom: 1px solid rgba(223, 186, 107, 0.2); padding-bottom: 5px; }
+.swiper-pagination-bullet { background: rgba(255, 255, 255, 0.4); }
+.swiper-pagination-bullet-active { background: var(--gold-champagne) !important; }
+
+/* DESIGN DOS CARDS EDITORIAIS (SOBRE ELA / NOS) */
+.details-section {
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.info-card {
+    position: relative;
+    background: var(--card-bg);
+    padding: 45px 35px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    transition: all 0.4s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(223, 186, 107, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.card-badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold-champagne);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.info-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: var(--pure-white);
+    margin-bottom: 18px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.info-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    text-align: justify;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+/* DESIGN DA PEQUENA CARTINHA AMOROSA */
+.letter-section {
+    max-width: 800px;
+    margin: 0 auto 100px auto;
+    padding: 0 20px;
+}
+
+.letter-container {
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 3px solid var(--gold-champagne);
+    border-radius: 4px;
+    padding: 60px 50px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.letter-header-icon {
+    text-align: center;
+    color: var(--gold-champagne);
+    font-size: 1.8rem;
+    margin-bottom: 35px;
+    opacity: 0.8;
+}
+
+.letter-paragraph {
+    font-family: 'Cinzel', serif;
+    font-style: italic;
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 400;
+    line-height: 1.9;
+}
+
+.letter-signature {
+    margin-top: 45px;
+    text-align: center;
+}
+
+.letter-signature .line {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: rgba(223, 186, 107, 0.3);
+    margin: 0 auto 15px auto;
+}
+
+.letter-signature p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold-champagne);
+    font-weight: 600;
+}
+
+
+.signature {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold-champagne);
+    font-weight: 600;
+}
+
+/* FOOTER */
+.site-footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+/* ANIMAÇÕES */
+.text-reveal {
+    animation: fadeInUp 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .music-player-container { top: 15px; right: 15px; padding: 8px 15px; }
+    .gallery-slider { height: 65vh; }
+    .cinema-hero { height: 55vh; }
+    .note-card { padding: 35px 20px; }
+    .narrative-container p { text-align: center; }
+}
